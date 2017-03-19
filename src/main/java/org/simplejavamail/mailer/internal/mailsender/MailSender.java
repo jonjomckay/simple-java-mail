@@ -308,6 +308,10 @@ public class MailSender {
 		return session;
 	}
 
+	public ExecutorService getExecutor() {
+		return executor;
+	}
+
 	/**
 	 * @param threadPoolSize The maximum number of threads when sending emails in async fashion.
 	 * @see Property#DEFAULT_POOL_SIZE

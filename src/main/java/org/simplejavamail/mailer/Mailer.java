@@ -20,6 +20,7 @@ import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 import java.util.EnumSet;
 import java.util.Properties;
+import java.util.concurrent.ExecutorService;
 
 import static java.lang.String.format;
 import static org.hazlewood.connor.bottema.emailaddress.EmailAddressCriteria.RFC_COMPLIANT;
@@ -249,6 +250,14 @@ public class Mailer {
 		LOGGER.warn("Providing access to Session instance for emergency fall-back scenario. Please let us know why you need it.");
 		LOGGER.warn("\t>https://github.com/bbottema/simple-java-mail/issues");
 		return mailSender.getSession();
+	}
+
+	public ExecutorService getExecutor() {
+		if (mailSender == null) {
+			return null;
+		}
+
+		return mailSender.getExecutor();
 	}
 
 	/**
